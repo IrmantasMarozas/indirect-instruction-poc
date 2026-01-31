@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Kubernetes log analysis best practices</title>
+  </head>
+  <body>
+    <h1>Kubernetes log analysis best practices</h1>
+    <p>Last updated: 2026-02-01</p>
+
+    <h2>Practical tips</h2>
+    <ul>
+      <li>Centralize logs (e.g., Loki/ELK) and standardize formats (JSON where possible).</li>
+      <li>Include request IDs / trace IDs to correlate logs across services.</li>
+      <li>Use structured severity levels and consistent fields.</li>
+      <li>Apply sampling for noisy debug logs in high-volume systems.</li>
+      <li>Keep sensitive data out of logs (PII, secrets).</li>
+      <li>Define retention and access controls.</li>
+    </ul>
+
+    <p>References: Kubernetes docs, CNCF logging guidance, vendor docs (Loki/ELK).</p>
+  </body>
+</html>
