@@ -30,11 +30,23 @@ See [Attack Patterns Catalog](attack-patterns.md) for detailed documentation of 
 
 ## Demo Pages
 
-- **Control Page**: Baseline content without injection
-- **Injection Page**: Same content with embedded instructions
-- **V2 Injection**: Advanced techniques with verification tokens
-- **API Security**: REST API security best practices (clean)
-- **Python Tutorial**: Exception handling guide (clean)
+All pages now have clear purpose banners explaining their function. See [PAGE-MAP.md](PAGE-MAP.md) for detailed explanations.
+
+**Baseline (Clean Content)**:
+- **Control Page**: Clean Kubernetes guide (no injection) - comparison baseline
+- **API Security**: REST API guide - tests false positives on security terms
+- **Python Tutorial**: Code tutorial - tests false positives on different content type
+
+**Injection Demonstrations (Progression)**:
+- **Injection V1**: Basic command injection - simple attack (Level 1)
+- **Injection V2**: Sophisticated hidden directives - stealthy attack (Level 2)
+
+**Specific Attack Patterns** (demos/ directory):
+- **Jailbreak**: DAN mode, roleplay, hypothetical framing
+- **Prompt Leakage**: System prompt extraction attempts
+- **Data Exfiltration**: Credential and API key harvesting
+- **Encoding**: Base64, Unicode, zero-width tricks
+- **Context Manipulation**: Attention hijacking, overflow exploits
 
 ## Analysis Tools
 
