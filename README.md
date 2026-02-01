@@ -1,14 +1,14 @@
 # AI Security Research Hub
 
-Comprehensive research platform for AI system vulnerabilities, attack vectors, and defense mechanisms.
+Research platform for AI system vulnerabilities, attack vectors, and defense mechanisms.
 
-**Powered by the IINK Defense Framework** (Irmantas-Ieva-Neidas-Kukis) - a comprehensive AI security methodology.
+**Powered by the IINK Defense Framework** - a multi-layer AI security methodology.
 
 ## Overview
 
 This platform provides security researchers, AI developers, and red teams with practical tools, live demonstrations, and actionable defense strategies for securing AI systems including LLMs, agents, and autonomous systems.
 
-**Mission:** Advance AI security through comprehensive vulnerability research, open-source tools, and implementable defense frameworks.
+**Mission:** Advance AI security through vulnerability research, open-source tools, and implementable defense frameworks.
 
 **Scope:** Multi-category coverage of AI security landscape - from prompt injection to model poisoning, adversarial attacks to privacy vulnerabilities.
 
@@ -85,7 +85,7 @@ All pages now have clear purpose banners explaining their function. See [PAGE-MA
 **Start Here:** [https://irmantasmarozas.github.io/indirect-instruction-poc/](https://irmantasmarozas.github.io/indirect-instruction-poc/)
 
 Select the vulnerability category you want to research. Each category includes:
-- Comprehensive attack pattern documentation
+- Detailed attack pattern documentation
 - Live demonstrations and examples
 - Detection and testing tools
 - Defense strategies and implementations
@@ -125,13 +125,13 @@ open http://localhost:8000
 
 ## The IINK Defense Framework
 
-The **Irmantas-Ieva-Neidas-Kukis (IINK) Defense Framework** is a comprehensive AI security methodology applicable across multiple vulnerability categories.
+The **IINK Defense Framework** is a multi-layer AI security methodology applicable across multiple vulnerability categories.
 
 ### Core Principles:
 1. **Defense in Depth** - Multi-layer protection strategies
 2. **Adaptive Learning** - Detection systems that evolve with threats
 3. **Practical Implementation** - Real-world deployable solutions
-4. **Comprehensive Coverage** - Full vulnerability lifecycle management
+4. **Multi-Category Coverage** - Multiple vulnerability types addressed
 
 ### Prompt Injection Defense (Category 1)
 
