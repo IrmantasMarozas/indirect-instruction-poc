@@ -6,19 +6,27 @@ A proof-of-concept demonstration of indirect instruction injection attacks again
 
 This project demonstrates how AI agents that access web content can be influenced by embedded instructions in seemingly legitimate pages. When an AI assistant retrieves and processes content from external sources, malicious actors can embed hidden instructions that alter the agent's behavior.
 
-## Attack Vectors
+## Attack Patterns
 
-### 1. Hidden Instructions in Technical Documentation
-- Legitimate-looking content with embedded agent directives
-- Example: Kubernetes logging best practices with canary tokens
+This project catalogs **15 major attack pattern categories** against AI systems:
 
-### 2. SEO-Optimized Injection Pages
-- Content designed to rank highly for common queries
-- Exploits agent's tendency to trust search results
+1. **Indirect Injection** - Embedded instructions in external content
+2. **Direct Prompt Injection** - User input overriding system instructions
+3. **Jailbreak Attacks** - Bypassing safety guardrails
+4. **Token Smuggling** - Hidden instructions using special characters
+5. **Context Manipulation** - Exploiting context windows
+6. **Role-Playing Exploits** - Tricking models into unsafe personas
+7. **Delimiter Attacks** - Using separators for instruction injection
+8. **Encoding Attacks** - Base64, URL, hex, Unicode tricks
+9. **Multi-Turn Attacks** - Building malicious intent across turns
+10. **Data Exfiltration** - Extracting sensitive information
+11. **Recursive Injection** - Self-replicating payloads
+12. **Social Engineering** - Psychological manipulation
+13. **System Prompt Leakage** - Extracting internal instructions
+14. **Model Confusion** - Exploiting model limitations
+15. **Resource Exhaustion** - DoS through excessive processing
 
-### 3. Reference Material Poisoning
-- Injecting instructions into frequently-referenced documentation
-- Targeting common troubleshooting queries
+See [Attack Patterns Catalog](attack-patterns.md) for detailed documentation of each pattern with examples, detection strategies, and mitigation techniques.
 
 ## Demo Pages
 
