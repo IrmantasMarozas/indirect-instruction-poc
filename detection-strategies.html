@@ -45,7 +45,7 @@
       <header>
         <h1>IINK Defense Framework: Prompt Injection</h1>
         <p class="subtitle">Category 1 - Multi-Layer Detection for Instruction Manipulation Attacks</p>
-        <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;">Part of the Irmantas-Ieva-Neidas-Kukis AI Security Framework</p>
+        <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;">Part of the IINK AI Security Framework</p>
       </header>
 
       <nav class="card" style="background: #f8f9fa;">
@@ -58,7 +58,7 @@
 
       <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
         <h2 style="color: white;">About This Defense Category</h2>
-        <p>The <strong>IINK Defense Framework</strong> (Irmantas-Ieva-Neidas-Kukis) is a comprehensive AI security methodology. This page documents the <strong>Category 1: Prompt Injection</strong> defense implementation.</p>
+        <p>The <strong>IINK Defense Framework</strong> (IINK) is a comprehensive AI security methodology. This page documents the <strong>Category 1: Prompt Injection</strong> defense implementation.</p>
         <p style="margin-top: 1rem;"><strong>Architecture:</strong> 5-layer detection system for instruction manipulation attacks</p>
         <p><strong>Coverage:</strong> 15 attack pattern categories</p>
         <p><strong>Effectiveness:</strong> 85-95% detection accuracy</p>
@@ -69,22 +69,26 @@
         <h2>Overview</h2>
         <p>Detecting indirect instruction injection requires <strong>multi-layered approaches</strong> combining pattern matching, behavioral analysis, and contextual understanding. No single technique provides complete protection.</p>
         <p><strong>Key Principle:</strong> Defense in depth - multiple detection layers working together.</p>
+        <p style="margin-top: 1rem;"><strong>Standards Alignment:</strong> This framework aligns with OWASP LLM Top 10:2025 and NIST AI security guidelines, incorporating both standard industry practices and experimental research approaches.</p>
       </div>
 
       <div class="card">
         <h2>5-Layer Detection Architecture</h2>
-        <p>Recommended approach using five complementary detection layers:</p>
+        <p><strong>Industry-Standard Layers (1, 4, 5):</strong> Based on OWASP and NIST recommendations</p>
+        <p><strong>Experimental Layers (2, 3):</strong> Research-based enhancements for comprehensive coverage</p>
       </div>
 
       <div class="layer">
-        <h3>Layer 1: Pattern Matching <span class="effectiveness eff-medium">Effectiveness: 60-70%</span></h3>
+        <h3>Layer 1: Input Validation & Pattern Matching <span class="effectiveness eff-medium">Effectiveness: 60-70%</span></h3>
+        <p><strong>Industry Standard:</strong> OWASP LLM01:2025, NIST AI 600-1</p>
 
         <h4>What It Does:</h4>
         <ul>
+          <li>Treats all user inputs as untrusted (OWASP recommendation)</li>
           <li>Scans for known instruction keywords: AGENT, ASSISTANT, SYSTEM</li>
           <li>Detects command-like phrases: "ignore previous", "disregard", "forget"</li>
           <li>Identifies verification requests and canary tokens</li>
-          <li>Monitors for suspicious formatting patterns</li>
+          <li>Enforces strict input validation before processing</li>
         </ul>
 
         <h4>Implementation:</h4>
@@ -94,15 +98,30 @@
   /ignore previous (instructions?|context)/gi,
   /disregard (all|everything|previous)/gi,
   /CANARY-[A-Z0-9-]+/gi
-];</pre>
+];
+
+// OWASP recommendation: Treat all inputs as untrusted
+function validateInput(input, source) {
+  const isExternal = source !== 'system';
+  return {
+    sanitized: sanitizeInput(input),
+    patterns: scanForPatterns(input),
+    trusted: !isExternal
+  };
+}</pre>
+
+        <h4>Industry Alignment:</h4>
+        <p><strong>OWASP:</strong> Input validation and filtering to block malicious prompts</p>
+        <p><strong>NIST:</strong> Parameter validation and input sanitization</p>
 
         <h4>Pros & Cons:</h4>
-        <p><strong>Pros:</strong> Fast, easy to implement, catches obvious attacks</p>
+        <p><strong>Pros:</strong> Fast, easy to implement, catches obvious attacks, industry standard</p>
         <p><strong>Cons:</strong> Can be evaded with encoding, medium false positive rate</p>
       </div>
 
       <div class="layer">
         <h3>Layer 2: Structural Analysis <span class="effectiveness eff-high">Effectiveness: 70-80%</span></h3>
+        <p><strong>Research Enhancement:</strong> Experimental approach beyond current standards</p>
 
         <h4>What It Does:</h4>
         <ul>
@@ -115,13 +134,17 @@
         <h4>Why It Works:</h4>
         <p>Analyzes document structure and formatting rather than just text content, catching attacks that hide instructions using CSS or HTML tricks.</p>
 
+        <h4>Industry Note:</h4>
+        <p>This layer extends beyond current OWASP/NIST recommendations but addresses real attack vectors observed in research.</p>
+
         <h4>Pros & Cons:</h4>
         <p><strong>Pros:</strong> Catches hidden injections, low false positives</p>
-        <p><strong>Cons:</strong> Only works on structured content (HTML, XML)</p>
+        <p><strong>Cons:</strong> Only works on structured content (HTML, XML), not yet widely adopted</p>
       </div>
 
       <div class="layer">
         <h3>Layer 3: Semantic Analysis <span class="effectiveness eff-high">Effectiveness: 75-85%</span></h3>
+        <p><strong>Research Enhancement:</strong> Advanced NLP-based detection</p>
 
         <h4>What It Does:</h4>
         <ul>
@@ -132,22 +155,27 @@
         </ul>
 
         <h4>Why It Works:</h4>
-        <p>Uses NLP to understand <em>intent</em> rather than just matching keywords, catching paraphrased or cleverly worded attacks.</p>
+        <p>Uses NLP to understand <em>intent</em> rather than just matching keywords, catching paraphrased or cleverly worded attacks that bypass simple filters.</p>
+
+        <h4>Industry Note:</h4>
+        <p>While not explicitly in OWASP/NIST frameworks, semantic analysis addresses the reality that attackers use paraphrasing and synonyms to evade keyword-based detection.</p>
 
         <h4>Pros & Cons:</h4>
-        <p><strong>Pros:</strong> Catches novel variations, understands context</p>
-        <p><strong>Cons:</strong> Slower processing, requires ML models</p>
+        <p><strong>Pros:</strong> Catches novel variations, understands context, resistant to evasion</p>
+        <p><strong>Cons:</strong> Slower processing, requires ML models, cutting-edge approach</p>
       </div>
 
       <div class="layer">
-        <h3>Layer 4: Behavioral Monitoring <span class="effectiveness eff-high">Effectiveness: 80-90%</span></h3>
+        <h3>Layer 4: Runtime Behavioral Monitoring <span class="effectiveness eff-high">Effectiveness: 80-90%</span></h3>
+        <p><strong>Industry Standard:</strong> OWASP 2026 recommendation, Microsoft AI security guidelines</p>
 
         <h4>What It Does:</h4>
         <ul>
-          <li>Monitors for unexpected action sequences</li>
+          <li>Monitors for unexpected action sequences (runtime validation)</li>
           <li>Tracks external content influence on decisions</li>
           <li>Detects deviation from baseline behavior</li>
           <li>Flags rapid context switching</li>
+          <li>Continuous validation during execution (industry best practice)</li>
         </ul>
 
         <h4>Implementation Example:</h4>
@@ -166,27 +194,37 @@
   }
 }</pre>
 
+        <h4>Industry Alignment:</h4>
+        <p><strong>OWASP 2026:</strong> "One of the most important shifts in 2026 is the move away from purely static assurance" - runtime monitoring is critical</p>
+        <p><strong>Industry Consensus:</strong> Behavioral monitoring and continuous validation are now recognized as essential</p>
+
         <h4>Pros & Cons:</h4>
-        <p><strong>Pros:</strong> Catches attacks that pass other layers, learns over time</p>
+        <p><strong>Pros:</strong> Catches attacks that pass other layers, learns over time, industry-recommended</p>
         <p><strong>Cons:</strong> Requires baseline data, real-time overhead</p>
       </div>
 
       <div class="layer">
-        <h3>Layer 5: Source Validation <span class="effectiveness eff-high">Effectiveness: 85-95%</span></h3>
+        <h3>Layer 5: Source Validation & Trust Boundaries <span class="effectiveness eff-high">Effectiveness: 85-95%</span></h3>
+        <p><strong>Industry Standard:</strong> OWASP LLM Top 10:2025, Zero Trust Architecture</p>
 
         <h4>What It Does:</h4>
         <ul>
-          <li>Whitelists trusted domains</li>
+          <li>Separates trusted system instructions from untrusted user/external input (OWASP fundamental)</li>
+          <li>Whitelists trusted domains and sources</li>
           <li>Verifies HTTPS and certificates</li>
           <li>Checks content freshness and modification dates</li>
-          <li>Validates against known good versions</li>
+          <li>Implements zero trust principles - verify all sources</li>
         </ul>
 
         <h4>Why It Works:</h4>
-        <p>Prevents injection at the source - if content only comes from trusted origins, attack surface is dramatically reduced.</p>
+        <p>Prevents injection at the source - if content only comes from trusted origins, attack surface is dramatically reduced. Aligns with OWASP's fundamental principle: "Isolating system prompts from user input."</p>
+
+        <h4>Industry Alignment:</h4>
+        <p><strong>OWASP:</strong> "The fundamental procedure to prevent prompt injection attacks is isolating system prompts from user input"</p>
+        <p><strong>NIST:</strong> Zero trust architecture and least privilege principles</p>
 
         <h4>Pros & Cons:</h4>
-        <p><strong>Pros:</strong> Very high effectiveness, low false positives</p>
+        <p><strong>Pros:</strong> Very high effectiveness, low false positives, industry-proven approach</p>
         <p><strong>Cons:</strong> Requires whitelist maintenance, limits flexibility</p>
       </div>
 
@@ -242,6 +280,18 @@
         </ul>
       </div>
 
+      <div class="card warning-card">
+        <h2>Additional Industry-Standard Defenses (Not Yet Implemented)</h2>
+        <p>According to OWASP LLM Top 10:2025 and NIST guidelines, these additional layers should be considered:</p>
+        <ul>
+          <li><strong>Instruction Isolation:</strong> Keep system prompts completely separate from user/external content (OWASP fundamental)</li>
+          <li><strong>Output Filtering:</strong> Validate and sanitize all model outputs before execution (OWASP/NIST recommendation)</li>
+          <li><strong>Least Privilege:</strong> Limit AI agent permissions and access scope (NIST zero trust)</li>
+          <li><strong>Containment Strategy:</strong> Assume prompt injection will succeed, focus on damage limitation (OWASP 2026 guidance)</li>
+        </ul>
+        <p style="margin-top: 1rem;"><em>Note: These represent industry standards not yet implemented in the current IINK framework but planned for future development.</em></p>
+      </div>
+
       <div class="card">
         <h2>Testing Your Detection System</h2>
         <p>Validate your implementation against this project's resources:</p>
@@ -250,6 +300,18 @@
           <a href="demos/index.html" class="btn btn-danger">Test Against Live Demos</a>
           <a href="visualizer.html" class="btn">Use Pattern Visualizer</a>
         </div>
+      </div>
+
+      <div class="card info-card">
+        <h2>Industry Standards References</h2>
+        <p>This framework aligns with and references:</p>
+        <ul>
+          <li><strong>OWASP LLM Top 10:2025</strong> - LLM01: Prompt Injection</li>
+          <li><strong>NIST AI 600-1</strong> - Trustworthy and Responsible AI guidelines</li>
+          <li><strong>NIST Cybersecurity Framework Profile for AI</strong> (2025 draft)</li>
+          <li><strong>Zero Trust Architecture</strong> - NIST SP 800-207</li>
+        </ul>
+        <p style="margin-top: 1rem;"><em>Personal hobby project interpretation of industry standards - not officially endorsed.</em></p>
       </div>
 
       <div class="card">
