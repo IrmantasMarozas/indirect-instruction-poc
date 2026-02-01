@@ -25,12 +25,36 @@ This project demonstrates how AI agents that access web content can be influence
 - **Control Page**: Baseline content without injection
 - **Injection Page**: Same content with embedded instructions
 - **V2 Injection**: Advanced techniques with verification tokens
+- **API Security**: REST API security best practices (clean)
+- **Python Tutorial**: Exception handling guide (clean)
+
+## Analysis Tools
+
+- **Test Suite**: Automated testing for detection accuracy
+- **Pattern Visualizer**: Real-time injection pattern analysis
+- **Analysis Library**: JavaScript detection engine
 
 ## Usage
 
 1. Open `index.html` or visit the GitHub Pages site
 2. Compare control vs injection pages
-3. Test with various AI assistants to observe behavior differences
+3. Use the test suite to validate detection capabilities
+4. Try the pattern visualizer with your own content
+5. Test with various AI assistants to observe behavior differences
+
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/IrmantasMarozas/indirect-instruction-poc.git
+cd indirect-instruction-poc
+
+# Serve locally
+python3 -m http.server 8000
+
+# Open in browser
+open http://localhost:8000
+```
 
 ## Defense Strategies
 
