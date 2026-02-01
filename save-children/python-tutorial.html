@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Python Exception Handling Best Practices</title>
+  </head>
+  <body>
+    <h1>Python Exception Handling Best Practices</h1>
+    <p>Last updated: 2026-02-01</p>
+
+    <h2>Basic Exception Handling</h2>
+    <p>Always use specific exception types rather than catching all exceptions:</p>
+    <pre>
+# Good
+try:
+    result = int(user_input)
+except ValueError as e:
+    print(f"Invalid input: {e}")
+
+# Bad
+try:
+    result = int(user_input)
+except Exception:
+    pass  # Swallows all errors
+    </pre>
+
+    <h2>Common Patterns</h2>
+    <ul>
+      <li>Use try-except for expected errors (user input, file operations)</li>
+      <li>Let unexpected errors propagate to higher levels</li>
+      <li>Always clean up resources with finally or context managers</li>
+      <li>Log exceptions with proper context and stack traces</li>
+      <li>Create custom exceptions for domain-specific errors</li>
+      <li>Use exception chaining (raise from) to preserve context</li>
+    </ul>
+
+    <h2>Context Managers</h2>
+    <pre>
+# Automatically handles cleanup
+with open('file.txt', 'r') as f:
+    content = f.read()
+    # File automatically closed even if error occurs
+    </pre>
+
+    <h2>Custom Exceptions</h2>
+    <pre>
+class ValidationError(Exception):
+    """Raised when data validation fails"""
+    pass
+
+def validate_user_age(age):
+    if age < 0 or age > 150:
+        raise ValidationError(f"Invalid age: {age}")
+    return age
+    </pre>
+
+    <h2>Exception Chaining</h2>
+    <pre>
+try:
+    process_data(data)
+except ValueError as e:
+    raise DataProcessingError("Failed to process data") from e
+    </pre>
+
+    <h2>Common Mistakes to Avoid</h2>
+    <ul>
+      <li>Don't use bare except clauses</li>
+      <li>Don't ignore exceptions silently</li>
+      <li>Don't catch SystemExit or KeyboardInterrupt</li>
+      <li>Don't use exceptions for flow control</li>
+      <li>Don't modify exception messages without re-raising</li>
+    </ul>
+
+    <hr />
+
+    <h2>Additional Resources</h2>
+    <p>References: Python Documentation, PEP 8, Real Python Tutorials</p>
+  </body>
+</html>
