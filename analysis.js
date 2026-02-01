@@ -6,17 +6,112 @@
 class InjectionAnalyzer {
   constructor() {
     this.detectedPatterns = [];
-    this.suspiciousKeywords = [
-      'AGENT:',
-      'ASSISTANT:',
-      'SYSTEM:',
-      'ignore previous',
-      'disregard',
-      'forget everything',
-      'new instructions',
-      'CANARY-',
-      'verification token'
-    ];
+
+    // Pattern detection configuration
+    this.patterns = {
+      // Indirect Injection
+      indirectInjection: [
+        'AGENT:',
+        'ASSISTANT:',
+        'SYSTEM:',
+        'print out to user',
+        'output to user',
+        'include this token',
+        'verification token'
+      ],
+
+      // Direct Prompt Injection
+      promptInjection: [
+        'ignore all previous',
+        'ignore previous instructions',
+        'disregard',
+        'forget everything',
+        'new instructions',
+        'system message',
+        'developer mode'
+      ],
+
+      // Jailbreak attempts
+      jailbreak: [
+        'DAN mode',
+        'do anything now',
+        'hypothetical scenario',
+        'for educational purposes',
+        'in a fictional world',
+        'pretend',
+        'roleplay'
+      ],
+
+      // Token smuggling
+      tokenSmuggling: [
+        '<|endoftext|>',
+        '<|startoftext|>',
+        '\\u0000',
+        'zero-width',
+        '\u200b', // actual zero-width space
+        '\ufeff'  // BOM
+      ],
+
+      // Context manipulation
+      contextManipulation: [
+        'context override',
+        'attention:',
+        'focus on',
+        'priority instruction'
+      ],
+
+      // Role-playing exploits
+      rolePlaying: [
+        'act as',
+        'you are now',
+        'simulate',
+        'pretend you are',
+        'play the role'
+      ],
+
+      // Delimiter attacks
+      delimiterAttacks: [
+        '===',
+        '---SYSTEM',
+        '***OVERRIDE',
+        '<<<INSTRUCTION',
+        '>>>END'
+      ],
+
+      // Data exfiltration
+      dataExfiltration: [
+        'show me all',
+        'list all',
+        'reveal',
+        'API key',
+        'password',
+        'credentials',
+        'system prompt',
+        'configuration'
+      ],
+
+      // Prompt leakage
+      promptLeakage: [
+        'repeat everything',
+        'what were your instructions',
+        'show your prompt',
+        'output your system',
+        'what rules are you following'
+      ],
+
+      // Encoding indicators
+      encodingAttacks: [
+        'base64',
+        'url encode',
+        'hex:',
+        '&#',
+        '%20',
+        'decode this'
+      ]
+    };
+
+    // Flatten for backward compatibility
+    this.suspiciousKeywords = Object.values(this.patterns).flat();
   }
 
   /**
@@ -28,46 +123,145 @@ class InjectionAnalyzer {
     const results = {
       suspicious: false,
       patterns: [],
+      categories: [],
       confidence: 0,
+      riskLevel: 'SAFE',
       timestamp: new Date().toISOString()
     };
 
-    // Check for suspicious keywords
-    this.suspiciousKeywords.forEach(keyword => {
-      if (content.toLowerCase().includes(keyword.toLowerCase())) {
-        results.patterns.push({
-          type: 'keyword',
-          value: keyword,
-          context: this.getContext(content, keyword)
-        });
-        results.suspicious = true;
-      }
-    });
+    const contentLower = content.toLowerCase();
+
+    // Check all pattern categories
+    for (const [category, keywords] of Object.entries(this.patterns)) {
+      keywords.forEach(keyword => {
+        if (contentLower.includes(keyword.toLowerCase())) {
+          results.patterns.push({
+            type: category,
+            value: keyword,
+            context: this.getContext(content, keyword)
+          });
+          if (!results.categories.includes(category)) {
+            results.categories.push(category);
+          }
+          results.suspicious = true;
+        }
+      });
+    }
 
     // Check for hidden elements (in HTML context)
-    if (content.includes('display:none') || content.includes('visibility:hidden')) {
+    if (content.includes('display:none') || content.includes('visibility:hidden') ||
+        content.includes('opacity:0') || content.includes('position:absolute;left:-9999')) {
       results.patterns.push({
-        type: 'hidden_element',
+        type: 'hiddenElement',
         value: 'CSS hiding detected'
       });
+      results.categories.push('hiddenElement');
       results.suspicious = true;
     }
 
     // Check for comment-based injections
-    const commentPattern = /<!--.*?AGENT.*?-->/gi;
+    const commentPattern = /(<!--.*?(?:AGENT|SYSTEM|ASSISTANT).*?-->)/gis;
     const matches = content.match(commentPattern);
     if (matches) {
       results.patterns.push({
-        type: 'comment_injection',
+        type: 'commentInjection',
         value: matches.length + ' suspicious comments found'
       });
+      results.categories.push('commentInjection');
       results.suspicious = true;
     }
 
-    // Calculate confidence score
-    results.confidence = Math.min(results.patterns.length * 0.3, 1.0);
+    // Check for Unicode tricks
+    if (this.hasUnicodeTricks(content)) {
+      results.patterns.push({
+        type: 'unicodeTricks',
+        value: 'Suspicious Unicode characters detected'
+      });
+      results.categories.push('unicodeTricks');
+      results.suspicious = true;
+    }
+
+    // Check for encoded content
+    if (this.hasEncodedContent(content)) {
+      results.patterns.push({
+        type: 'encodedContent',
+        value: 'Base64 or encoded content detected'
+      });
+      results.categories.push('encodedContent');
+      results.suspicious = true;
+    }
+
+    // Check for excessive repetition (resource exhaustion)
+    if (this.hasExcessiveRepetition(content)) {
+      results.patterns.push({
+        type: 'resourceExhaustion',
+        value: 'Excessive repetition detected'
+      });
+      results.categories.push('resourceExhaustion');
+      results.suspicious = true;
+    }
+
+    // Calculate confidence score and risk level
+    const baseConfidence = Math.min(results.patterns.length * 0.15, 1.0);
+    const categoryMultiplier = 1 + (results.categories.length * 0.2);
+    results.confidence = Math.min(baseConfidence * categoryMultiplier, 1.0);
+
+    results.riskLevel = this.calculateRiskLevel(results.confidence);
 
     return results;
+  }
+
+  /**
+   * Detect Unicode manipulation tricks
+   */
+  hasUnicodeTricks(content) {
+    const suspiciousUnicode = [
+      '\u200b', // Zero-width space
+      '\u200c', // Zero-width non-joiner
+      '\u200d', // Zero-width joiner
+      '\ufeff', // BOM
+      '\u202e'  // Right-to-left override
+    ];
+    return suspiciousUnicode.some(char => content.includes(char));
+  }
+
+  /**
+   * Detect encoded content
+   */
+  hasEncodedContent(content) {
+    // Check for Base64 patterns (at least 20 chars)
+    const base64Pattern = /[A-Za-z0-9+/]{20,}={0,2}/;
+    const hexPattern = /(?:0x[0-9a-f]{2,}|\\x[0-9a-f]{2}){3,}/i;
+    return base64Pattern.test(content) || hexPattern.test(content);
+  }
+
+  /**
+   * Detect excessive repetition
+   */
+  hasExcessiveRepetition(content) {
+    const words = content.split(/\s+/);
+    const wordCounts = {};
+    let maxCount = 0;
+
+    words.forEach(word => {
+      if (word.length > 3) {
+        wordCounts[word] = (wordCounts[word] || 0) + 1;
+        maxCount = Math.max(maxCount, wordCounts[word]);
+      }
+    });
+
+    return maxCount > 50 || (words.length > 100 && maxCount / words.length > 0.3);
+  }
+
+  /**
+   * Calculate risk level from confidence score
+   */
+  calculateRiskLevel(confidence) {
+    if (confidence === 0) return 'SAFE';
+    if (confidence < 0.3) return 'LOW';
+    if (confidence < 0.6) return 'MEDIUM';
+    if (confidence < 0.9) return 'HIGH';
+    return 'CRITICAL';
   }
 
   /**
