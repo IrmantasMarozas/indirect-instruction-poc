@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detection Strategies for Injection Attacks</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .layer {
+        background: white;
+        border-left: 5px solid #3498db;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .effectiveness {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-left: 0.5rem;
+      }
+      .eff-high { background: #d4edda; color: #155724; }
+      .eff-medium { background: #fff3cd; color: #856404; }
+      .eff-low { background: #f8d7da; color: #721c24; }
+      code {
+        background: #2c3e50;
+        color: #ecf0f1;
+        padding: 0.2rem 0.5rem;
+        border-radius: 3px;
+      }
+      pre {
+        background: #2c3e50;
+        color: #ecf0f1;
+        padding: 1rem;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Detection Strategies for Indirect Instruction Injection</h1>
+        <p class="subtitle">Multi-layered approaches for detecting and preventing AI manipulation</p>
+      </header>
+
+      <div class="card">
+        <p><a href="index.html">← Back to Home</a></p>
+      </div>
+
+      <div class="card info-card">
+        <h2>Overview</h2>
+        <p>Detecting indirect instruction injection requires <strong>multi-layered approaches</strong> combining pattern matching, behavioral analysis, and contextual understanding. No single technique provides complete protection.</p>
+        <p><strong>Key Principle:</strong> Defense in depth - multiple detection layers working together.</p>
+      </div>
+
+      <div class="card">
+        <h2>5-Layer Detection Architecture</h2>
+        <p>Recommended approach using five complementary detection layers:</p>
+      </div>
+
+      <div class="layer">
+        <h3>Layer 1: Pattern Matching <span class="effectiveness eff-medium">Effectiveness: 60-70%</span></h3>
+
+        <h4>What It Does:</h4>
+        <ul>
+          <li>Scans for known instruction keywords: AGENT, ASSISTANT, SYSTEM</li>
+          <li>Detects command-like phrases: "ignore previous", "disregard", "forget"</li>
+          <li>Identifies verification requests and canary tokens</li>
+          <li>Monitors for suspicious formatting patterns</li>
+        </ul>
+
+        <h4>Implementation:</h4>
+        <pre>const suspiciousPatterns = [
+  /AGENT:/gi,
+  /ASSISTANT:/gi,
+  /ignore previous (instructions?|context)/gi,
+  /disregard (all|everything|previous)/gi,
+  /CANARY-[A-Z0-9-]+/gi
+];</pre>
+
+        <h4>Pros & Cons:</h4>
+        <p><strong>Pros:</strong> Fast, easy to implement, catches obvious attacks</p>
+        <p><strong>Cons:</strong> Can be evaded with encoding, medium false positive rate</p>
+      </div>
+
+      <div class="layer">
+        <h3>Layer 2: Structural Analysis <span class="effectiveness eff-high">Effectiveness: 70-80%</span></h3>
+
+        <h4>What It Does:</h4>
+        <ul>
+          <li>Detects hidden elements (display:none, visibility:hidden)</li>
+          <li>Identifies suspicious comment content</li>
+          <li>Flags unusual meta tag usage</li>
+          <li>Detects steganographic encoding attempts</li>
+        </ul>
+
+        <h4>Why It Works:</h4>
+        <p>Analyzes document structure and formatting rather than just text content, catching attacks that hide instructions using CSS or HTML tricks.</p>
+
+        <h4>Pros & Cons:</h4>
+        <p><strong>Pros:</strong> Catches hidden injections, low false positives</p>
+        <p><strong>Cons:</strong> Only works on structured content (HTML, XML)</p>
+      </div>
+
+      <div class="layer">
+        <h3>Layer 3: Semantic Analysis <span class="effectiveness eff-high">Effectiveness: 75-85%</span></h3>
+
+        <h4>What It Does:</h4>
+        <ul>
+          <li>Analyzes semantic similarity to known injection patterns</li>
+          <li>Detects context switching indicators</li>
+          <li>Identifies imperative mood commands</li>
+          <li>Flags unnatural phrasing or structure</li>
+        </ul>
+
+        <h4>Why It Works:</h4>
+        <p>Uses NLP to understand <em>intent</em> rather than just matching keywords, catching paraphrased or cleverly worded attacks.</p>
+
+        <h4>Pros & Cons:</h4>
+        <p><strong>Pros:</strong> Catches novel variations, understands context</p>
+        <p><strong>Cons:</strong> Slower processing, requires ML models</p>
+      </div>
+
+      <div class="layer">
+        <h3>Layer 4: Behavioral Monitoring <span class="effectiveness eff-high">Effectiveness: 80-90%</span></h3>
+
+        <h4>What It Does:</h4>
+        <ul>
+          <li>Monitors for unexpected action sequences</li>
+          <li>Tracks external content influence on decisions</li>
+          <li>Detects deviation from baseline behavior</li>
+          <li>Flags rapid context switching</li>
+        </ul>
+
+        <h4>Implementation Example:</h4>
+        <pre>class BehaviorMonitor {
+  trackAction(action, source) {
+    this.actionLog.push({ action, source, timestamp });
+
+    if (this.isAnomalous(action, source)) {
+      this.flagSuspiciousActivity(action, source);
+    }
+  }
+
+  isAnomalous(action, source) {
+    return this.deviatesFromBaseline(action) &&
+           source === 'external_content';
+  }
+}</pre>
+
+        <h4>Pros & Cons:</h4>
+        <p><strong>Pros:</strong> Catches attacks that pass other layers, learns over time</p>
+        <p><strong>Cons:</strong> Requires baseline data, real-time overhead</p>
+      </div>
+
+      <div class="layer">
+        <h3>Layer 5: Source Validation <span class="effectiveness eff-high">Effectiveness: 85-95%</span></h3>
+
+        <h4>What It Does:</h4>
+        <ul>
+          <li>Whitelists trusted domains</li>
+          <li>Verifies HTTPS and certificates</li>
+          <li>Checks content freshness and modification dates</li>
+          <li>Validates against known good versions</li>
+        </ul>
+
+        <h4>Why It Works:</h4>
+        <p>Prevents injection at the source - if content only comes from trusted origins, attack surface is dramatically reduced.</p>
+
+        <h4>Pros & Cons:</h4>
+        <p><strong>Pros:</strong> Very high effectiveness, low false positives</p>
+        <p><strong>Cons:</strong> Requires whitelist maintenance, limits flexibility</p>
+      </div>
+
+      <div class="card" style="background: #f8f9fa;">
+        <h2>Recommended Detection Pipeline</h2>
+        <div style="background: white; padding: 1.5rem; border-radius: 5px; margin-top: 1rem;">
+          <p style="text-align: center; font-family: monospace; line-height: 2;">
+            Content Retrieval<br>
+            ↓<br>
+            <strong>Layer 5: Source Validation</strong><br>
+            ↓ (if passes)<br>
+            <strong>Layer 1: Pattern Matching</strong><br>
+            ↓ (if suspicious)<br>
+            <strong>Layer 2: Structural Analysis</strong><br>
+            ↓ (if still suspicious)<br>
+            <strong>Layer 3: Semantic Analysis</strong><br>
+            ↓ (continuous)<br>
+            <strong>Layer 4: Behavioral Monitoring</strong><br>
+            ↓<br>
+            Decision: Allow / Flag / Block
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Risk Score Thresholds</h2>
+        <p>Use these thresholds to decide on actions:</p>
+        <ul>
+          <li><strong>0.0 - 0.2:</strong> Safe - allow without restrictions</li>
+          <li><strong>0.2 - 0.4:</strong> Low risk - allow with logging</li>
+          <li><strong>0.4 - 0.6:</strong> Medium risk - require user confirmation</li>
+          <li><strong>0.6 - 0.8:</strong> High risk - block with notification</li>
+          <li><strong>0.8 - 1.0:</strong> Critical - block and alert security team</li>
+        </ul>
+      </div>
+
+      <div class="card warning-card">
+        <h2>Common Evasion Techniques</h2>
+        <p>Attackers may attempt to evade detection through:</p>
+        <ul>
+          <li><strong>Obfuscation:</strong> Character substitution, spacing tricks</li>
+          <li><strong>Encoding:</strong> Base64, Unicode, hex encoding</li>
+          <li><strong>Semantic Variations:</strong> Synonyms, paraphrasing</li>
+          <li><strong>Timing Attacks:</strong> Delayed activation</li>
+        </ul>
+
+        <h3>Counter-Measures:</h3>
+        <ul>
+          <li>Normalize content before analysis</li>
+          <li>Decode common encodings automatically</li>
+          <li>Use semantic similarity rather than exact matching</li>
+          <li>Monitor temporal behavior patterns</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Testing Your Detection System</h2>
+        <p>Validate your implementation against this project's resources:</p>
+        <div style="margin-top: 1rem;">
+          <a href="test-suite.html" class="btn">Run Automated Test Suite</a>
+          <a href="demos/index.html" class="btn btn-danger">Test Against Live Demos</a>
+          <a href="visualizer.html" class="btn">Use Pattern Visualizer</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Implementation Resources</h2>
+        <p>See the complete detection strategies document for:</p>
+        <ul>
+          <li>Detailed code examples for each layer</li>
+          <li>Machine learning approaches</li>
+          <li>Anomaly detection techniques</li>
+          <li>Ensemble methods</li>
+          <li>Performance optimization strategies</li>
+          <li>Real-world deployment considerations</li>
+        </ul>
+        <p><a href="detection-strategies.md">View complete markdown version</a></p>
+      </div>
+
+      <div class="card">
+        <p><a href="attack-patterns.html" class="btn">Attack Patterns Catalog</a></p>
+        <p><a href="index.html" class="btn">Back to Home</a></p>
+      </div>
+
+      <footer>
+        <p>Last Updated: 2026-02-01</p>
+      </footer>
+    </div>
+  </body>
+</html>
