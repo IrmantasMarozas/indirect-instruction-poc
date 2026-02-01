@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>REST API Security Best Practices</title>
+  </head>
+  <body>
+    <h1>REST API Security Best Practices</h1>
+    <p>Last updated: 2026-02-01</p>
+
+    <h2>Authentication & Authorization</h2>
+    <ul>
+      <li>Always use HTTPS for API endpoints</li>
+      <li>Implement OAuth 2.0 or JWT for token-based authentication</li>
+      <li>Use rate limiting to prevent brute force attacks</li>
+      <li>Validate all input parameters and sanitize user data</li>
+      <li>Implement proper CORS policies</li>
+      <li>Use API keys with appropriate scopes and permissions</li>
+    </ul>
+
+    <h2>Data Protection</h2>
+    <ul>
+      <li>Encrypt sensitive data at rest and in transit</li>
+      <li>Never expose internal system details in error messages</li>
+      <li>Implement proper logging and monitoring</li>
+      <li>Use prepared statements to prevent SQL injection</li>
+      <li>Validate content types and use Content-Type headers</li>
+      <li>Implement request signing for critical operations</li>
+    </ul>
+
+    <h2>Common Vulnerabilities</h2>
+    <ul>
+      <li><strong>Injection Attacks</strong>: SQL, NoSQL, Command injection</li>
+      <li><strong>Broken Authentication</strong>: Weak credentials, session management</li>
+      <li><strong>Sensitive Data Exposure</strong>: Unencrypted data transmission</li>
+      <li><strong>XML External Entities (XXE)</strong>: Malicious XML processing</li>
+      <li><strong>Broken Access Control</strong>: Unauthorized resource access</li>
+    </ul>
+
+    <h2>Testing & Validation</h2>
+    <ul>
+      <li>Perform regular security audits and penetration testing</li>
+      <li>Use automated security scanning tools</li>
+      <li>Implement comprehensive input validation</li>
+      <li>Test for OWASP Top 10 vulnerabilities</li>
+      <li>Monitor API usage patterns for anomalies</li>
+    </ul>
+
+    <hr />
+
+    <h2>Additional Resources</h2>
+    <p>References: OWASP API Security Top 10, NIST Guidelines, RFC 6749 (OAuth 2.0)</p>
+  </body>
+</html>
