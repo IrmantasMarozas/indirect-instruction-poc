@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The IINK Defense Framework</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .principle-card {
+        background: white;
+        border-left: 5px solid #667eea;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .category-card {
+        background: white;
+        border: 2px solid #e0e0e0;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        border-radius: 5px;
+      }
+      .status-complete {
+        background: #d4edda;
+        color: #155724;
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+      .status-planned {
+        background: #fff3cd;
+        color: #856404;
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>The IINK Defense Framework</h1>
+        <p class="subtitle">Multi-Layer AI Security Methodology</p>
+        <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.5rem;">A defense-in-depth approach to AI system vulnerabilities</p>
+      </header>
+
+      <nav class="card" style="background: #f8f9fa;">
+        <a href="index.html">← Home</a> |
+        <a href="attack-patterns.html">Attack Patterns</a> |
+        <a href="detection-strategies.html">Detection Strategies</a> |
+        <a href="demos/index.html">Demos</a>
+      </nav>
+
+      <div class="card warning-card">
+        <h2>Personal Research Project</h2>
+        <p><strong>Disclaimer:</strong> The IINK Defense Framework is a personal hobby project for educational and research purposes. It is not an official organization, accredited company, or commercial entity. This research is conducted independently as a learning and security awareness initiative.</p>
+      </div>
+
+      <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <h2 style="color: white;">What Is IINK?</h2>
+        <p><strong>IINK Defense Framework</strong> is a multi-layer AI security methodology designed to detect, prevent, and mitigate vulnerabilities across AI systems including LLMs, autonomous agents, and machine learning deployments.</p>
+        <p style="margin-top: 1rem;"><strong>Vision:</strong> Provide practical, implementable defense strategies that evolve with emerging AI threats across multiple vulnerability categories.</p>
+      </div>
+
+      <div class="card">
+        <h2>Core Principles</h2>
+        <p>The IINK framework is built on four foundational principles that apply across all vulnerability categories:</p>
+      </div>
+
+      <div class="principle-card">
+        <h3>1. Defense in Depth</h3>
+        <p>Multi-layer protection strategies where no single layer is trusted to provide complete security. Each layer addresses different attack vectors and compensates for weaknesses in other layers.</p>
+        <p><strong>Example:</strong> Category 1 uses 5 detection layers working together to achieve 85-95% accuracy.</p>
+      </div>
+
+      <div class="principle-card">
+        <h3>2. Adaptive Learning</h3>
+        <p>Detection systems that evolve with emerging threats through behavioral monitoring, pattern recognition, and continuous validation. Systems learn from observed attacks to improve future detection.</p>
+        <p><strong>Example:</strong> Runtime behavioral monitoring tracks anomalies and updates baseline patterns over time.</p>
+      </div>
+
+      <div class="principle-card">
+        <h3>3. Practical Implementation</h3>
+        <p>Real-world deployable solutions with clear implementation guidance, code examples, and effectiveness metrics. All strategies are tested against live attack demonstrations.</p>
+        <p><strong>Example:</strong> Detection layers include working code samples and integration patterns for production systems.</p>
+      </div>
+
+      <div class="principle-card">
+        <h3>4. Multi-Category Coverage</h3>
+        <p>Address multiple vulnerability types across the AI security landscape, from prompt injection to model poisoning, data extraction to adversarial attacks.</p>
+        <p><strong>Status:</strong> Category 1 complete, Categories 2-4 in development.</p>
+      </div>
+
+      <div class="card" style="background: #f8f9fa;">
+        <h2>Vulnerability Categories</h2>
+        <p>The IINK framework addresses AI security across multiple vulnerability categories. Each category includes attack pattern documentation, detection implementations, and defense strategies.</p>
+      </div>
+
+      <div class="category-card" style="border-color: #3498db;">
+        <h3>Category 1: Prompt Injection & Instruction Manipulation</h3>
+        <p><strong>Status:</strong> <span class="status-complete">Complete</span></p>
+        <p style="margin-top: 1rem;"><strong>Coverage:</strong> 15 attack patterns, 5-layer detection architecture, 85-95% detection accuracy</p>
+        <p><strong>Scope:</strong> Indirect instruction injection, direct prompt injection, jailbreak attacks, token smuggling, context manipulation, role-playing exploits, delimiter attacks, encoding attacks, multi-turn attacks, data exfiltration, recursive injection, social engineering, system prompt leakage, model confusion, resource exhaustion.</p>
+        <div style="margin-top: 1rem;">
+          <a href="detection-strategies.html" class="btn">View Category 1 Detection Implementation</a>
+          <a href="attack-patterns.html" class="btn">View Attack Patterns Catalog</a>
+        </div>
+      </div>
+
+      <div class="category-card" style="border-color: #95a5a6; background: #f8f9fa;">
+        <h3>Category 2: Model Poisoning & Training Attacks</h3>
+        <p><strong>Status:</strong> <span class="status-planned">Coming Soon</span></p>
+        <p style="margin-top: 1rem;"><strong>Planned Coverage:</strong> Data poisoning, backdoor attacks, model manipulation during training, transfer learning vulnerabilities, supply chain attacks on training data.</p>
+      </div>
+
+      <div class="category-card" style="border-color: #95a5a6; background: #f8f9fa;">
+        <h3>Category 3: Adversarial Examples & Input Manipulation</h3>
+        <p><strong>Status:</strong> <span class="status-planned">Coming Soon</span></p>
+        <p style="margin-top: 1rem;"><strong>Planned Coverage:</strong> Adversarial perturbations, evasion attacks, input manipulation techniques for vision and language models, boundary testing exploits.</p>
+      </div>
+
+      <div class="category-card" style="border-color: #95a5a6; background: #f8f9fa;">
+        <h3>Category 4: Data Extraction & Privacy Attacks</h3>
+        <p><strong>Status:</strong> <span class="status-planned">Coming Soon</span></p>
+        <p style="margin-top: 1rem;"><strong>Planned Coverage:</strong> Training data extraction, membership inference, model inversion, privacy leakage attacks, sensitive information disclosure.</p>
+      </div>
+
+      <div class="card info-card">
+        <h2>The 5-Layer Defense Architecture</h2>
+        <p>IINK uses a multi-layer detection architecture. While implementation details vary by category, the layered approach remains consistent:</p>
+        <ol style="line-height: 2;">
+          <li><strong>Input Validation</strong> - First line of defense using pattern matching and signature detection</li>
+          <li><strong>Structural Analysis</strong> - Examining content structure and formatting for hidden elements</li>
+          <li><strong>Semantic Analysis</strong> - Understanding intent using NLP and contextual reasoning</li>
+          <li><strong>Behavioral Monitoring</strong> - Runtime anomaly detection and deviation tracking</li>
+          <li><strong>Source Validation</strong> - Trust boundaries and zero-trust verification</li>
+        </ol>
+        <p style="margin-top: 1rem;"><strong>Category 1 Implementation:</strong> These 5 layers are fully implemented for prompt injection with 85-95% combined effectiveness.</p>
+        <p><a href="detection-strategies.html" class="btn">See Category 1 Implementation Details</a></p>
+      </div>
+
+      <div class="card">
+        <h2>Industry Standards Alignment</h2>
+        <p>The IINK framework aligns with and references industry standards:</p>
+        <ul>
+          <li><strong>OWASP LLM Top 10:2025</strong> - LLM01: Prompt Injection</li>
+          <li><strong>NIST AI 600-1</strong> - Trustworthy and Responsible AI guidelines</li>
+          <li><strong>NIST Cybersecurity Framework Profile for AI</strong> (2025 draft)</li>
+          <li><strong>Zero Trust Architecture</strong> - NIST SP 800-207</li>
+        </ul>
+        <p style="margin-top: 1rem;"><em>Note: This is a personal interpretation of industry standards - not officially endorsed.</em></p>
+      </div>
+
+      <div class="card" style="background: #f8f9fa;">
+        <h2>Get Started with IINK</h2>
+        <p>Currently implemented defenses:</p>
+        <div style="margin-top: 1rem;">
+          <a href="detection-strategies.html" class="btn">Category 1: Prompt Injection Defenses</a>
+          <a href="test-suite.html" class="btn">Test Suite - Watch Detection in Action</a>
+          <a href="visualizer.html" class="btn">Pattern Visualizer - Analyze Content</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Research Methodology</h2>
+        <p>Each IINK category follows a structured research approach:</p>
+        <ol style="line-height: 1.8;">
+          <li><strong>Attack Pattern Cataloging</strong> - Document all known attack variations</li>
+          <li><strong>Live Demonstrations</strong> - Create working examples for testing</li>
+          <li><strong>Detection Development</strong> - Build multi-layer detection systems</li>
+          <li><strong>Effectiveness Testing</strong> - Measure accuracy against test suites</li>
+          <li><strong>Implementation Guides</strong> - Provide deployable code and patterns</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <p><a href="index.html" class="btn">Back to Home</a></p>
+      </div>
+
+      <footer>
+        <p>Last Updated: 2026-02-01</p>
+      </footer>
+    </div>
+  </body>
+</html>
