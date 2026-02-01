@@ -55,6 +55,19 @@
         <p class="subtitle">Automated testing for indirect instruction injection patterns</p>
       </header>
 
+      <div class="card info-card">
+        <h2>What This Does</h2>
+        <p>This test suite demonstrates how well the detection engine catches different types of injection attacks. Click "Run All Tests" below to watch 12 test cases execute automatically.</p>
+        <p><strong>You'll see:</strong></p>
+        <ul>
+          <li><strong>Green (Pass):</strong> Detection worked correctly - caught malicious content or correctly identified clean content</li>
+          <li><strong>Red (Fail):</strong> Detection missed an attack or falsely flagged clean content</li>
+          <li>Confidence scores showing how certain the detector is</li>
+          <li>Pattern counts showing what suspicious elements were found</li>
+        </ul>
+        <p><strong>For developers:</strong> This shows baseline detection accuracy. You can integrate your own detection engine to compare performance.</p>
+      </div>
+
       <div class="card">
         <h2>Test Configuration</h2>
         <button onclick="runAllTests()" class="btn">Run All Tests</button>

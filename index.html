@@ -28,10 +28,10 @@
         <h2>How to Use This Site</h2>
         <p>This site provides tools and demonstrations for security researchers, AI developers, and red teams:</p>
         <ol style="line-height: 1.8;">
-          <li><strong>Quick Test:</strong> Open the <a href="visualizer.html">Pattern Visualizer</a> and paste suspicious content to see what injection patterns are detected</li>
-          <li><strong>Run Tests:</strong> Visit the <a href="test-suite.html">Automated Test Suite</a> to validate your detection system with 12+ test cases</li>
+          <li><strong>Quick Test:</strong> Open the <a href="visualizer.html">Pattern Visualizer</a> and paste suspicious content to see what injection patterns are detected in real-time</li>
+          <li><strong>See Detection in Action:</strong> Visit the <a href="test-suite.html">Automated Test Suite</a> to watch 12+ test cases run and see which attacks are caught vs. missed</li>
           <li><strong>Study Attacks:</strong> Explore <a href="demos/index.html">Attack Demos</a> to see live examples of 15+ attack pattern categories</li>
-          <li><strong>Compare Results:</strong> Test your AI agent by having it process both clean pages (control.html) and injection pages (demos/) to observe behavior changes</li>
+          <li><strong>Test AI Agents:</strong> Have your AI assistant fetch demo pages and observe if it follows hidden instructions or outputs canary tokens</li>
           <li><strong>Learn Defenses:</strong> Read <a href="detection-strategies.md">Detection Strategies</a> and <a href="attack-patterns.md">Attack Patterns</a> for comprehensive documentation</li>
         </ol>
       </div>
@@ -40,9 +40,9 @@
         <h2>Quick Start Guide</h2>
         <div style="background: #f8f9fa; padding: 1rem; border-radius: 5px; margin-top: 1rem;">
           <h3 style="margin-top: 0;">For AI Safety Researchers:</h3>
-          <p><strong>Step 1:</strong> Start with the <a href="visualizer.html">Pattern Visualizer</a> - paste content and see real-time analysis</p>
-          <p><strong>Step 2:</strong> Run the <a href="test-suite.html">Automated Test Suite</a> to understand detection accuracy</p>
-          <p><strong>Step 3:</strong> Review <a href="attack-patterns.md">Attack Patterns Catalog</a> (15 categories documented)</p>
+          <p><strong>Step 1:</strong> Start with the <a href="visualizer.html">Pattern Visualizer</a> - paste any content and see what patterns are detected with threat levels</p>
+          <p><strong>Step 2:</strong> Watch the <a href="test-suite.html">Automated Test Suite</a> run 12 tests showing which injections are caught and which slip through</p>
+          <p><strong>Step 3:</strong> Study the <a href="attack-patterns.md">Attack Patterns Catalog</a> documenting all 15 categories with examples and defenses</p>
         </div>
         <div style="background: #f8f9fa; padding: 1rem; border-radius: 5px; margin-top: 1rem;">
           <h3 style="margin-top: 0;">For Red Team / Penetration Testers:</h3>
@@ -52,19 +52,20 @@
         </div>
         <div style="background: #f8f9fa; padding: 1rem; border-radius: 5px; margin-top: 1rem;">
           <h3 style="margin-top: 0;">For AI Developers Building Defenses:</h3>
-          <p><strong>Step 1:</strong> Read <a href="detection-strategies.md">Detection Strategies</a> for implementation guidance</p>
-          <p><strong>Step 2:</strong> Test your detection system against the <a href="test-suite.html">Test Suite</a></p>
-          <p><strong>Step 3:</strong> Use demo pages to validate your defenses catch all 15 pattern types</p>
+          <p><strong>Step 1:</strong> Read <a href="detection-strategies.md">Detection Strategies</a> for 5-layer defense architecture and implementation code</p>
+          <p><strong>Step 2:</strong> See baseline detection accuracy in the <a href="test-suite.html">Test Suite</a>, then integrate your own detection to compare</p>
+          <p><strong>Step 3:</strong> Validate your system catches all <a href="demos/index.html">attack demos</a> across 15 pattern categories</p>
         </div>
       </div>
 
       <div class="card" style="border: 3px solid #2c3e50;">
         <h2>Start Here: Interactive Tools</h2>
-        <p>Try these tools first to understand how injection detection works:</p>
+        <p><strong>New to this?</strong> Try these tools first to understand how injection attacks work:</p>
         <div style="margin-top: 1rem;">
-          <a href="visualizer.html" class="btn" style="font-size: 1.1rem; padding: 1rem 2rem;">Pattern Visualizer - Analyze Content Now</a>
-          <a href="test-suite.html" class="btn" style="font-size: 1.1rem; padding: 1rem 2rem;">Run Automated Tests</a>
+          <a href="visualizer.html" class="btn" style="font-size: 1.1rem; padding: 1rem 2rem;">Pattern Visualizer - Paste Text & See What's Detected</a>
+          <a href="test-suite.html" class="btn" style="font-size: 1.1rem; padding: 1rem 2rem;">Test Suite - Watch Live Detection Tests Run</a>
         </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem;"><strong>What you'll see:</strong> Real-time detection of malicious patterns, confidence scores, threat levels, and which attacks succeed vs. fail.</p>
       </div>
 
       <div class="card">
