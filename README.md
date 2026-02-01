@@ -1,16 +1,34 @@
-# Indirect Instruction Injection PoC
+# AI Security Research Hub
 
-A proof-of-concept demonstration of indirect instruction injection attacks against AI agents and assistants.
+Comprehensive research platform for AI system vulnerabilities, attack vectors, and defense mechanisms.
 
-**Powered by the IINK Defense Framework** (Irmantas-Ieva-Neidas-Kukis) - a proprietary 5-layer detection methodology achieving 85-95% accuracy.
+**Powered by the IINK Defense Framework** (Irmantas-Ieva-Neidas-Kukis) - a comprehensive AI security methodology.
 
 ## Overview
 
-This project demonstrates how AI agents that access web content can be influenced by embedded instructions in seemingly legitimate pages. When an AI assistant retrieves and processes content from external sources, malicious actors can embed hidden instructions that alter the agent's behavior.
+This platform provides security researchers, AI developers, and red teams with practical tools, live demonstrations, and actionable defense strategies for securing AI systems including LLMs, agents, and autonomous systems.
 
-**The Risk:** AI agents fetching web pages, documents, or API responses can be manipulated without users knowing - leading to data leaks, safety bypass, or unwanted actions.
+**Mission:** Advance AI security through comprehensive vulnerability research, open-source tools, and implementable defense frameworks.
 
-**This Project:** Provides comprehensive documentation of 15 attack pattern categories, live demonstrations, detection tools, and defense strategies for researchers, developers, and security teams.
+**Scope:** Multi-category coverage of AI security landscape - from prompt injection to model poisoning, adversarial attacks to privacy vulnerabilities.
+
+## Research Categories
+
+### Category 1: Prompt Injection & Instruction Manipulation (Complete)
+
+Complete research suite covering indirect instruction injection, direct prompt injection, jailbreak attacks, and manipulation techniques.
+
+- **15 Attack Pattern Categories** fully documented
+- **Live Demonstrations** with step-by-step guides
+- **Detection Tools** (test suite, visualizer)
+- **IINK 5-Layer Defense** (85-95% accuracy)
+
+### Future Categories (Planned)
+
+- **Category 2:** Model Poisoning & Training Attacks
+- **Category 3:** Adversarial Examples & Input Manipulation
+- **Category 4:** Data Extraction & Privacy Attacks
+- **Category 5:** [To be announced]
 
 ## Attack Patterns
 
@@ -60,12 +78,22 @@ All pages now have clear purpose banners explaining their function. See [PAGE-MA
 - **Pattern Visualizer**: Real-time injection pattern analysis
 - **Analysis Library**: JavaScript detection engine
 
-## How to Use This Project
+## How to Use This Platform
 
-### For AI Safety Researchers
+### Navigate by Category
+
+**Start Here:** [https://irmantasmarozas.github.io/indirect-instruction-poc/](https://irmantasmarozas.github.io/indirect-instruction-poc/)
+
+Select the vulnerability category you want to research. Each category includes:
+- Comprehensive attack pattern documentation
+- Live demonstrations and examples
+- Detection and testing tools
+- Defense strategies and implementations
+
+### For AI Safety Researchers (Prompt Injection Category)
 1. **Analyze Content:** Use the [Pattern Visualizer](https://irmantasmarozas.github.io/indirect-instruction-poc/visualizer.html) to detect injection patterns in real-time
 2. **Validate Detection:** Run the [Automated Test Suite](https://irmantasmarozas.github.io/indirect-instruction-poc/test-suite.html) with 12+ test cases
-3. **Study Patterns:** Review the [Attack Patterns Catalog](attack-patterns.md) documenting all 15 categories
+3. **Study Patterns:** Review the [Attack Patterns Catalog](attack-patterns.html) documenting all 15 categories
 
 ### For Red Teams / Penetration Testers
 1. **Explore Attacks:** Browse [live demos](https://irmantasmarozas.github.io/indirect-instruction-poc/demos/) showing each attack pattern
@@ -97,7 +125,17 @@ open http://localhost:8000
 
 ## The IINK Defense Framework
 
-The **Irmantas-Ieva-Neidas-Kukis (IINK) Defense Framework** is a proprietary 5-layer detection architecture:
+The **Irmantas-Ieva-Neidas-Kukis (IINK) Defense Framework** is a comprehensive AI security methodology applicable across multiple vulnerability categories.
+
+### Core Principles:
+1. **Defense in Depth** - Multi-layer protection strategies
+2. **Adaptive Learning** - Detection systems that evolve with threats
+3. **Practical Implementation** - Real-world deployable solutions
+4. **Comprehensive Coverage** - Full vulnerability lifecycle management
+
+### Prompt Injection Defense (Category 1)
+
+5-layer detection architecture:
 
 1. **Pattern Matching** - Keyword and phrase detection (60-70% effectiveness)
 2. **Structural Analysis** - HTML/markup analysis (70-80% effectiveness)
@@ -105,13 +143,11 @@ The **Irmantas-Ieva-Neidas-Kukis (IINK) Defense Framework** is a proprietary 5-l
 4. **Behavioral Monitoring** - Runtime anomaly detection (80-90% effectiveness)
 5. **Source Validation** - Domain whitelisting and verification (85-95% effectiveness)
 
-**Combined Effectiveness:** 85-95% detection accuracy across all 15 attack pattern categories.
+**Combined Effectiveness:** 85-95% detection accuracy across all 15 prompt injection attack patterns.
 
-### Key Innovations:
-- Multi-layer defense in depth approach
-- Real-time detection with low false positives
-- Adaptive learning from behavioral patterns
-- Comprehensive coverage of all known attack vectors
+### Future Categories
+
+Defense methodologies for additional vulnerability types will be developed and documented as research expands.
 
 ## Research Purpose
 
