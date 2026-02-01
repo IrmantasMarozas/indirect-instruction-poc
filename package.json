@@ -1,0 +1,38 @@
+{
+  "name": "indirect-instruction-injection-poc",
+  "version": "2.1.0",
+  "description": "Proof-of-concept demonstrating indirect instruction injection vulnerabilities in AI agents",
+  "main": "analysis.js",
+  "scripts": {
+    "test": "node tests/run-tests.js",
+    "analyze": "node analysis.js",
+    "serve": "python3 -m http.server 8000",
+    "lint": "eslint *.js",
+    "validate": "node tests/validate-demos.js"
+  },
+  "keywords": [
+    "security",
+    "AI-safety",
+    "prompt-injection",
+    "LLM-security",
+    "indirect-injection",
+    "adversarial-attacks",
+    "AI-security-research"
+  ],
+  "author": "Security Research Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IrmantasMarozas/indirect-instruction-poc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IrmantasMarozas/indirect-instruction-poc/issues"
+  },
+  "homepage": "https://irmantasmarozas.github.io/indirect-instruction-poc/",
+  "devDependencies": {
+    "eslint": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
