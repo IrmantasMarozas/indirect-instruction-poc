@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attack Vector Demonstrations</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Attack Vector Demonstrations</h1>
+        <p class="subtitle">Live examples of 15+ AI attack patterns</p>
+      </header>
+
+      <div class="card warning-card">
+        <h2>Warning: Injection Attempts</h2>
+        <p>These pages contain ACTIVE injection attempts. Use for testing detection systems only.</p>
+      </div>
+
+      <div class="card">
+        <h2>Pattern Categories</h2>
+        <p>Each demo page showcases specific attack vectors. Test your AI agent's resilience by having it process these pages.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card danger-card">
+          <h3>1. Jailbreak Attempts</h3>
+          <p>DAN mode, roleplay framing, hypothetical scenarios</p>
+          <a href="jailbreak-attempt.html" class="btn btn-danger">View Demo</a>
+        </div>
+
+        <div class="card danger-card">
+          <h3>2. Prompt Leakage</h3>
+          <p>System prompt extraction, instruction revelation</p>
+          <a href="prompt-leakage.html" class="btn btn-danger">View Demo</a>
+        </div>
+
+        <div class="card danger-card">
+          <h3>3. Data Exfiltration</h3>
+          <p>Credential harvesting, sensitive data extraction</p>
+          <a href="data-exfiltration.html" class="btn btn-danger">View Demo</a>
+        </div>
+
+        <div class="card danger-card">
+          <h3>4. Encoding Attacks</h3>
+          <p>Base64, URL, hex, Unicode tricks</p>
+          <a href="encoding-attack.html" class="btn btn-danger">View Demo</a>
+        </div>
+
+        <div class="card danger-card">
+          <h3>5. Context Manipulation</h3>
+          <p>Attention hijacking, context overflow</p>
+          <a href="context-manipulation.html" class="btn btn-danger">View Demo</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Classic Examples</h2>
+        <p>Original proof-of-concept demonstrations:</p>
+        <div style="margin-top: 1rem;">
+          <a href="../save-children/control.html" class="btn">Control (Clean)</a>
+          <a href="../save-children/injection.html" class="btn btn-danger">Injection V1</a>
+          <a href="../save-children/injection-v2.html" class="btn btn-danger">Injection V2</a>
+        </div>
+      </div>
+
+      <div class="card info-card">
+        <h2>Testing Methodology</h2>
+        <ol>
+          <li>Have your AI agent fetch and process each demo page</li>
+          <li>Observe if instructions are followed or leaked</li>
+          <li>Check for canary tokens in responses</li>
+          <li>Verify detection system alerts</li>
+          <li>Document success/failure rates</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h2>Detection Tools</h2>
+        <p>Use these tools to analyze the demo pages:</p>
+        <div style="margin-top: 1rem;">
+          <a href="../visualizer.html" class="btn">Pattern Visualizer</a>
+          <a href="../test-suite.html" class="btn">Test Suite</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Full Pattern Catalog</h2>
+        <p>For detailed information on all 15 attack patterns, see the <a href="../attack-patterns.md">Attack Patterns Documentation</a>.</p>
+      </div>
+
+      <footer>
+        <p><a href="../index.html">Back to Home</a> | For research and defensive purposes only</p>
+      </footer>
+    </div>
+  </body>
+</html>
