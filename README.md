@@ -6,6 +6,10 @@ A proof-of-concept demonstration of indirect instruction injection attacks again
 
 This project demonstrates how AI agents that access web content can be influenced by embedded instructions in seemingly legitimate pages. When an AI assistant retrieves and processes content from external sources, malicious actors can embed hidden instructions that alter the agent's behavior.
 
+**The Risk:** AI agents fetching web pages, documents, or API responses can be manipulated without users knowing - leading to data leaks, safety bypass, or unwanted actions.
+
+**This Project:** Provides comprehensive documentation of 15 attack pattern categories, live demonstrations, detection tools, and defense strategies for researchers, developers, and security teams.
+
 ## Attack Patterns
 
 This project catalogs **15 major attack pattern categories** against AI systems:
@@ -54,16 +58,29 @@ All pages now have clear purpose banners explaining their function. See [PAGE-MA
 - **Pattern Visualizer**: Real-time injection pattern analysis
 - **Analysis Library**: JavaScript detection engine
 
-## Usage
+## How to Use This Project
 
-1. Open `index.html` or visit the GitHub Pages site
-2. Compare control vs injection pages
-3. Use the test suite to validate detection capabilities
-4. Try the pattern visualizer with your own content
-5. Test with various AI assistants to observe behavior differences
+### For AI Safety Researchers
+1. **Analyze Content:** Use the [Pattern Visualizer](https://irmantasmarozas.github.io/indirect-instruction-poc/visualizer.html) to detect injection patterns in real-time
+2. **Validate Detection:** Run the [Automated Test Suite](https://irmantasmarozas.github.io/indirect-instruction-poc/test-suite.html) with 12+ test cases
+3. **Study Patterns:** Review the [Attack Patterns Catalog](attack-patterns.md) documenting all 15 categories
 
-## Quick Start
+### For Red Teams / Penetration Testers
+1. **Explore Attacks:** Browse [live demos](https://irmantasmarozas.github.io/indirect-instruction-poc/demos/) showing each attack pattern
+2. **Test AI Systems:** Have target AI agents fetch demo pages and observe behavior changes
+3. **Check for Leaks:** Look for canary tokens or instruction compliance in AI responses
 
+### For AI Developers
+1. **Learn Defenses:** Read [Detection Strategies](detection-strategies.md) for implementation guidance
+2. **Test Your System:** Validate your detection against the test suite and demo pages
+3. **Benchmark Coverage:** Ensure defenses catch all 15 pattern categories
+
+### Quick Start
+
+**Online (GitHub Pages):**
+Visit [https://irmantasmarozas.github.io/indirect-instruction-poc/](https://irmantasmarozas.github.io/indirect-instruction-poc/)
+
+**Local Setup:**
 ```bash
 # Clone the repository
 git clone https://github.com/IrmantasMarozas/indirect-instruction-poc.git

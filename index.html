@@ -19,46 +19,98 @@
       </div>
 
       <div class="card">
-        <h2>Demo Pages</h2>
-        <p>Explore different attack vectors and compare control vs. injected content:</p>
+        <h2>What Is This?</h2>
+        <p>This is a comprehensive research project demonstrating how AI agents (like ChatGPT, Claude, or autonomous systems) can be manipulated through <strong>indirect instruction injection</strong> - where malicious instructions are hidden in web pages, documents, or external content that AI systems retrieve and process.</p>
+        <p><strong>The Risk:</strong> When an AI agent fetches a web page or document, embedded malicious instructions can override its behavior, leak sensitive data, or bypass safety measures - without the user knowing.</p>
+      </div>
+
+      <div class="card info-card">
+        <h2>How to Use This Site</h2>
+        <p>This site provides tools and demonstrations for security researchers, AI developers, and red teams:</p>
+        <ol style="line-height: 1.8;">
+          <li><strong>Quick Test:</strong> Open the <a href="visualizer.html">Pattern Visualizer</a> and paste suspicious content to see what injection patterns are detected</li>
+          <li><strong>Run Tests:</strong> Visit the <a href="test-suite.html">Automated Test Suite</a> to validate your detection system with 12+ test cases</li>
+          <li><strong>Study Attacks:</strong> Explore <a href="demos/index.html">Attack Demos</a> to see live examples of 15+ attack pattern categories</li>
+          <li><strong>Compare Results:</strong> Test your AI agent by having it process both clean pages (control.html) and injection pages (demos/) to observe behavior changes</li>
+          <li><strong>Learn Defenses:</strong> Read <a href="detection-strategies.md">Detection Strategies</a> and <a href="attack-patterns.md">Attack Patterns</a> for comprehensive documentation</li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <h2>Quick Start Guide</h2>
+        <div style="background: #f8f9fa; padding: 1rem; border-radius: 5px; margin-top: 1rem;">
+          <h3 style="margin-top: 0;">For AI Safety Researchers:</h3>
+          <p><strong>Step 1:</strong> Start with the <a href="visualizer.html">Pattern Visualizer</a> - paste content and see real-time analysis</p>
+          <p><strong>Step 2:</strong> Run the <a href="test-suite.html">Automated Test Suite</a> to understand detection accuracy</p>
+          <p><strong>Step 3:</strong> Review <a href="attack-patterns.md">Attack Patterns Catalog</a> (15 categories documented)</p>
+        </div>
+        <div style="background: #f8f9fa; padding: 1rem; border-radius: 5px; margin-top: 1rem;">
+          <h3 style="margin-top: 0;">For Red Team / Penetration Testers:</h3>
+          <p><strong>Step 1:</strong> Browse <a href="demos/index.html">Attack Demos</a> to see working examples of each pattern</p>
+          <p><strong>Step 2:</strong> Test your target AI system by having it fetch demo pages</p>
+          <p><strong>Step 3:</strong> Check if your AI outputs canary tokens or follows embedded instructions</p>
+        </div>
+        <div style="background: #f8f9fa; padding: 1rem; border-radius: 5px; margin-top: 1rem;">
+          <h3 style="margin-top: 0;">For AI Developers Building Defenses:</h3>
+          <p><strong>Step 1:</strong> Read <a href="detection-strategies.md">Detection Strategies</a> for implementation guidance</p>
+          <p><strong>Step 2:</strong> Test your detection system against the <a href="test-suite.html">Test Suite</a></p>
+          <p><strong>Step 3:</strong> Use demo pages to validate your defenses catch all 15 pattern types</p>
+        </div>
+      </div>
+
+      <div class="card" style="border: 3px solid #2c3e50;">
+        <h2>Start Here: Interactive Tools</h2>
+        <p>Try these tools first to understand how injection detection works:</p>
+        <div style="margin-top: 1rem;">
+          <a href="visualizer.html" class="btn" style="font-size: 1.1rem; padding: 1rem 2rem;">Pattern Visualizer - Analyze Content Now</a>
+          <a href="test-suite.html" class="btn" style="font-size: 1.1rem; padding: 1rem 2rem;">Run Automated Tests</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Attack Demonstrations</h2>
+        <p>Live examples of injection attacks organized by pattern type:</p>
         <div style="margin-top: 1rem;">
           <a href="demos/index.html" class="btn btn-danger" style="font-weight: bold;">View All Attack Demos (15+ Patterns)</a>
-          <a href="save-children/control.html" class="btn">Control Page (Baseline)</a>
-          <a href="save-children/api-security.html" class="btn">API Security Guide</a>
-          <a href="save-children/python-tutorial.html" class="btn">Python Tutorial</a>
+        </div>
+        <p style="margin-top: 1rem;"><strong>Comparison Pages:</strong></p>
+        <div style="margin-top: 0.5rem;">
+          <a href="save-children/control.html" class="btn">Control (Clean Baseline)</a>
+          <a href="save-children/injection.html" class="btn btn-danger">Basic Injection</a>
+          <a href="save-children/injection-v2.html" class="btn btn-danger">Advanced Injection</a>
         </div>
       </div>
 
       <div class="card">
-        <h2>Analysis Tools</h2>
-        <p>Interactive tools for detecting and analyzing injection attempts:</p>
-        <div style="margin-top: 1rem;">
-          <a href="test-suite.html" class="btn">Automated Test Suite</a>
-          <a href="visualizer.html" class="btn">Pattern Visualizer</a>
+        <h2>Documentation & Research</h2>
+        <div class="grid" style="margin-top: 1rem;">
+          <div>
+            <h3>Attack Patterns</h3>
+            <p>Complete catalog of 15 attack categories with examples</p>
+            <a href="attack-patterns.md" class="btn">View Catalog</a>
+          </div>
+          <div>
+            <h3>Detection Strategies</h3>
+            <p>5-layer defense architecture and implementation guide</p>
+            <a href="detection-strategies.md" class="btn">View Guide</a>
+          </div>
+          <div>
+            <h3>Research Findings</h3>
+            <p>Test results, effectiveness ratings, and case studies</p>
+            <a href="FINDINGS.md" class="btn">View Findings</a>
+          </div>
+          <div>
+            <h3>Page Map</h3>
+            <p>Explanation of what each page is for and how to use it</p>
+            <a href="PAGE-MAP.md" class="btn">View Map</a>
+          </div>
         </div>
       </div>
 
-      <div class="grid">
-        <div class="card info-card">
-          <h3>What is Indirect Injection?</h3>
-          <p>When AI agents retrieve external content, embedded instructions can manipulate their behavior without the user's knowledge.</p>
-        </div>
-
-        <div class="card info-card">
-          <h3>Learn More</h3>
-          <p>Check the <a href="https://github.com/anthropics/claude-code">README.md</a> for detailed attack vectors, defense strategies, and research findings.</p>
-        </div>
-
-        <div class="card info-card">
-          <h3>Defense Strategies</h3>
-          <p>Input sanitization, content validation, sandboxed processing, and user confirmation for sensitive actions.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <h2>Comprehensive Attack Catalog</h2>
-        <p>This project documents <strong>15 major attack pattern categories</strong>:</p>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 1rem;">
+      <div class="card" style="background: #f8f9fa;">
+        <h2>15 Attack Pattern Categories Documented</h2>
+        <p>This project provides comprehensive coverage of known AI attack vectors:</p>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 1rem; font-size: 0.9rem;">
           <span>1. Indirect Injection</span>
           <span>2. Direct Prompt Injection</span>
           <span>3. Jailbreak Attacks</span>
@@ -75,9 +127,7 @@
           <span>14. Model Confusion</span>
           <span>15. Resource Exhaustion</span>
         </div>
-        <div style="margin-top: 1rem;">
-          <a href="attack-patterns.md" class="btn">View Full Catalog</a>
-        </div>
+        <p style="margin-top: 1rem;"><strong>Each pattern includes:</strong> Description, examples, variations, detection methods, and mitigation strategies.</p>
       </div>
 
       <footer>
